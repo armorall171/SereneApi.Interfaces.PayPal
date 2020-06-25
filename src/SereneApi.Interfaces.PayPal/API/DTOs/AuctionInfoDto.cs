@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SereneApi.Interfaces.PayPal.Converters;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -31,6 +32,7 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs
         /// The date and time when the auction closes.
         /// </summary>
         [JsonPropertyName("auction_closing_date")]
+        [JsonConverter(typeof(Rfc3339JsonConverter))]
         public DateTime ClosingDate { get; set; }
     }
 }

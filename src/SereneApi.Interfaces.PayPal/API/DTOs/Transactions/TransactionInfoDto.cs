@@ -1,4 +1,5 @@
 ﻿using SereneApi.Interfaces.PayPal.API.Enums;
+using SereneApi.Interfaces.PayPal.Converters;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -49,6 +50,7 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs.Transactions
         /// </summary>
         [MaxLength(25)]
         [JsonPropertyName("transaction_initiation_date")]
+        [JsonConverter(typeof(Rfc3339JsonConverter))]
         public DateTime InitiationDate { get; set; }
 
         /// <summary>
@@ -56,6 +58,7 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs.Transactions
         /// </summary>
         [MaxLength(25)]
         [JsonPropertyName("transaction_updated_date")]
+        [JsonConverter(typeof(Rfc3339JsonConverter))]
         public DateTime UpdatedDate { get; set; }
 
         /// <summary>
@@ -116,6 +119,7 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs.Transactions
         /// A code that indicates the transaction status.
         /// </summary>
         [JsonPropertyName("transaction_status")]
+        [JsonConverter(typeof(TransactionStatusJsonConverter))]
         public TransactionStatus Status { get; set; }
 
         /// <summary>
@@ -176,6 +180,7 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs.Transactions
         /// Indicates whether the transaction is eligible for protection.
         /// </summary>
         [JsonPropertyName("protection_eligibility")]
+        [JsonConverter(typeof(ProtectionEligibilityJsonConverter))]
         public ProtectionEligibility ProtectionEligibility { get; set; }
 
         /// <summary>

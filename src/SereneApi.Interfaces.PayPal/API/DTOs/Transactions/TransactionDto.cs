@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SereneApi.Interfaces.PayPal.Converters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -23,18 +24,21 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs.Transactions
         /// The start date and time, in <see href="https://tools.ietf.org/html/rfc3339#section-5.6">Internet date and time format</see>.
         /// </summary>
         [JsonPropertyName("start_date")]
+        [JsonConverter(typeof(Rfc3339JsonConverter))]
         public DateTime StartDate { get; set; }
 
         /// <summary>
         /// The end date and time or the last date when the data can be served, in <see href="https://tools.ietf.org/html/rfc3339#section-5.6">Internet date and time format</see>.
         /// </summary>
         [JsonPropertyName("end_date")]
+        [JsonConverter(typeof(Rfc3339JsonConverter))]
         public DateTime EndDate { get; set; }
 
         /// <summary>
         /// The date and time when the data was last refreshed, in <see href="https://tools.ietf.org/html/rfc3339#section-5.6">Internet date and time format</see>.
         /// </summary>
         [JsonPropertyName("last_refreshed_datetime")]
+        [JsonConverter(typeof(Rfc3339JsonConverter))]
         public DateTime LastRefreshed { get; set; }
 
         /// <summary>

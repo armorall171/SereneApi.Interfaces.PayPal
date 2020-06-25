@@ -4,7 +4,6 @@ using SereneApi.Interfaces.PayPal.API.Definitions;
 using SereneApi.Interfaces.PayPal.API.DTOs.Transactions;
 using SereneApi.Interfaces.PayPal.API.Queries;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SereneApi.Interfaces.PayPal.Handlers
@@ -15,18 +14,18 @@ namespace SereneApi.Interfaces.PayPal.Handlers
         {
         }
 
-        public Task<IApiResponse<List<TransactionDto>>> GetAsync()
+        public Task<IApiResponse<TransactionDto>> GetAsync()
         {
-            return PerformRequestAsync<List<TransactionDto>>(Method.Get);
+            return PerformRequestAsync<TransactionDto>(Method.GET);
         }
 
-        public Task<IApiResponse<List<TransactionDto>>> GetAsync(Action<TransactionQuery> search)
+        public Task<IApiResponse<TransactionDto>> GetAsync(Action<TransactionQuery> search)
         {
             TransactionQuery query = new TransactionQuery();
 
             search.Invoke(query);
 
-            return PerformRequestAsync<List<TransactionDto>>(Method.Get,
+            return PerformRequestAsync<TransactionDto>(Method.GET,
                 r => r.WithQuery(query));
         }
     }
