@@ -1,6 +1,6 @@
 ﻿namespace SereneApi.Interfaces.PayPal
 {
-    public static class PayPalApiSettings
+    internal static class PayPalApiSettings
     {
         public static string PayPalSource = "https://api.paypal.com/";
 

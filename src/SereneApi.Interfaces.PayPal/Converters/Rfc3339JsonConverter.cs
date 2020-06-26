@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace SereneApi.Interfaces.PayPal.Converters
 {
-    public class Rfc3339JsonConverter: JsonConverter<DateTime>
+    internal class Rfc3339JsonConverter: JsonConverter<DateTime>
     {
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

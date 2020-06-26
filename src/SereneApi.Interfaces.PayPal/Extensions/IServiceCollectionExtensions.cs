@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SereneApi.Abstraction.Enums;
 using SereneApi.Extensions.DependencyInjection;
+using SereneApi.Extensions.Mocking;
 using SereneApi.Interfaces.PayPal.API.Definitions;
 using SereneApi.Interfaces.PayPal.API.DTOs;
+using SereneApi.Interfaces.PayPal.API.DTOs.Transactions;
 using SereneApi.Interfaces.PayPal.Handlers;
 using SereneApi.Interfaces.PayPal.Types;
 using SereneApi.Types;
@@ -40,10 +43,15 @@ namespace SereneApi.Interfaces.PayPal
                     PayPalApiSettings.TransactionResource,
                     PayPalApiSettings.TransactionResourcePath);
             })
-            .AddAuthenticator<IAuthenticationApi, TokenDto>(
+            .AddInjectedAuthenticator<IAuthenticationApi, TokenDto>(
                 api => api.GetTokenAsync(),
                 s => new TokenInfo(s.AccessToken, s.ExpiresIn)
-            );
+            )
+            .WithMockResponses(r =>
+            {
+                r.AddMockResponse(new TransactionDto())
+                    .RespondsToRequestsWith(Method.GET);
+            });
         }
     }
 }

@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SereneApi.Extensions.DependencyInjection" Version="1.0.4.4-beta" />
+    <PackageReference Include="SereneApi.Extensions.Mocking" Version="1.0.4.4-beta" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
@@ -28,6 +28,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SereneApi\src\SereneApi.Extensions.DependencyInjection\SereneApi.Extensions.DependencyInjection.csproj" />
   </ItemGroup>
 
 </Project>
