@@ -6,7 +6,9 @@ using SereneApi.Interfaces.PayPal.Handlers;
 using SereneApi.Interfaces.PayPal.Types;
 using SereneApi.Types;
 
-namespace SereneApi.Interfaces.PayPal.Extensions
+// DO NOTE CHANGE
+// ReSharper disable once CheckNamespace
+namespace SereneApi.Interfaces.PayPal
 {
     public static class IServiceCollectionExtensions
     {
