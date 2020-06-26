@@ -1,10 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SereneApi.Extensions.DependencyInjection;
 using SereneApi.Interfaces.PayPal.API.Definitions;
 using SereneApi.Interfaces.PayPal.API.DTOs;
 using SereneApi.Interfaces.PayPal.Handlers;
 using SereneApi.Interfaces.PayPal.Types;
+using SereneApi.Types;
 
-namespace SereneApi.Interfaces.PayPal.Extensions
+// DO NOTE CHANGE
+// ReSharper disable once CheckNamespace
+namespace SereneApi.Interfaces.PayPal
 {
     public static class IServiceCollectionExtensions
     {
@@ -29,29 +33,17 @@ namespace SereneApi.Interfaces.PayPal.Extensions
                 o.AddBasicAuthentication(credentials.Username, credentials.Password);
             });
 
-            TokenDto token;
-
-            using(ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider())
-            {
-                IAuthenticationApi authApi = serviceProvider.GetRequiredService<IAuthenticationApi>();
-
-                IApiResponse<TokenDto> tokenResponse = authApi.GetToken();
-
-                if(!tokenResponse.WasSuccessful)
-                {
-                }
-
-                token = tokenResponse.Result;
-            }
-
             serviceCollection.RegisterApiHandler<ITransactionsApi, TransactionApiHandler>(o =>
             {
                 o.UseSource(
                     payPalSource,
                     PayPalApiSettings.TransactionResource,
                     PayPalApiSettings.TransactionResourcePath);
-                o.AddBearerAuthentication(token.AccessToken);
-            });
+            })
+            .AddAuthenticator<IAuthenticationApi, TokenDto>(
+                api => api.GetTokenAsync(),
+                s => new TokenInfo(s.AccessToken, s.ExpiresIn)
+            );
         }
     }
 }

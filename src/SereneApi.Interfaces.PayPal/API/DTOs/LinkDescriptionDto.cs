@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SereneApi.Interfaces.PayPal.Converters;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace SereneApi.Interfaces.PayPal.API.DTOs
@@ -25,6 +26,7 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs
         /// The HTTP method required to make the related call.
         /// </summary>
         [JsonPropertyName("method")]
+        [JsonConverter(typeof(MethodJsonConverter))]
         public Method Method { get; set; }
     }
 }

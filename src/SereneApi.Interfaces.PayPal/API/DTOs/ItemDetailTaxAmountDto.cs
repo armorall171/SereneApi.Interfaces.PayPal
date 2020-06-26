@@ -8,6 +8,6 @@ namespace SereneApi.Interfaces.PayPal.API.DTOs
         /// The tax levied by a government on the purchase of goods or services.
         /// </summary>
         [JsonPropertyName("tax_amount")]
-        public MoneyDto TaxAmount { get; set; }
+        public MoneyDto Amount { get; set; }
     }
 }
