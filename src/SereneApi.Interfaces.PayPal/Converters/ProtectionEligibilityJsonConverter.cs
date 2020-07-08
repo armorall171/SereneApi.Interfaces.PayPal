@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace SereneApi.Interfaces.PayPal.Converters
 {
-    public class ProtectionEligibilityJsonConverter: JsonConverter<ProtectionEligibility>
+    internal class ProtectionEligibilityJsonConverter: JsonConverter<ProtectionEligibility>
     {
         public override ProtectionEligibility Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

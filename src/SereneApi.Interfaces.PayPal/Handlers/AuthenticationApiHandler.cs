@@ -1,8 +1,9 @@
-﻿using SereneApi.Extensions.DependencyInjection.Interfaces;
-using SereneApi.Interfaces.PayPal.API.Definitions;
+﻿using SereneApi.Abstractions.Options;
+using SereneApi.Abstractions.Request;
+using SereneApi.Abstractions.Request.Content;
+using SereneApi.Abstractions.Response;
+using SereneApi.Interfaces.PayPal.API;
 using SereneApi.Interfaces.PayPal.API.DTOs;
-using SereneApi.Interfaces.Requests;
-using SereneApi.Types.Content;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,10 +11,9 @@ namespace SereneApi.Interfaces.PayPal.Handlers
 {
     internal class AuthenticationApiHandler: ApiHandler, IAuthenticationApi
     {
-        public AuthenticationApiHandler(IApiHandlerOptions<AuthenticationApiHandler> options) : base(options)
+        public AuthenticationApiHandler(IApiOptions<IAuthenticationApi> options) : base(options)
         {
         }
-
 
         public IApiResponse<TokenDto> GetToken()
         {

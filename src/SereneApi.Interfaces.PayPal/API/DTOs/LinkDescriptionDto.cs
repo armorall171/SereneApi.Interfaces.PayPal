@@ -1,4 +1,5 @@
-﻿using SereneApi.Interfaces.PayPal.Converters;
+﻿using SereneApi.Abstractions.Request;
+using SereneApi.Interfaces.PayPal.Converters;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 

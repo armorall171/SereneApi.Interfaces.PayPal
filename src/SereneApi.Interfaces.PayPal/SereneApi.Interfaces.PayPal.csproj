@@ -7,7 +7,7 @@
     <Product>SereneApi</Product>
     <Company>DeltaWare</Company>
     <Authors>Bradley Clarke</Authors>
-    <Version>1.0.0.1-alpha</Version>
+    <Version>1.0.0.3-alpha</Version>
     <Copyright>Copyright (c) 2020 Bradley Clarke</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/armorall171/SereneApi.Interfaces.PayPal</PackageProjectUrl>
@@ -16,15 +16,23 @@
     <PackageTags>PayPal; paypal; API; REST; RESTful; DependencyInjection; DI</PackageTags>
     <NeutralLanguage>en-AU</NeutralLanguage>
     <Description>SereneApi.Interfaces.PayPal adds DI support for PayPal and its supporting APIs and DTOs.</Description>
+    <PackageIcon>nuget_logo.png</PackageIcon>
+      <IncludeSymbols>true</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SereneApi.Extensions.DependencyInjection" Version="1.0.4.4-beta" />
+    <PackageReference Include="SereneApi" Version="1.0.5.3-prerelease" />
+    <PackageReference Include="SereneApi.Extensions.DependencyInjection" Version="1.0.5.3-prerelease" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\nuget_logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

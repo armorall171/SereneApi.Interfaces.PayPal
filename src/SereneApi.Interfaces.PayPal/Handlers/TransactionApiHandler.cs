@@ -1,6 +1,7 @@
-﻿
-using SereneApi.Extensions.DependencyInjection.Interfaces;
-using SereneApi.Interfaces.PayPal.API.Definitions;
+﻿using SereneApi.Abstractions.Options;
+using SereneApi.Abstractions.Request;
+using SereneApi.Abstractions.Response;
+using SereneApi.Interfaces.PayPal.API;
 using SereneApi.Interfaces.PayPal.API.DTOs.Transactions;
 using SereneApi.Interfaces.PayPal.API.Queries;
 using System;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace SereneApi.Interfaces.PayPal.Handlers
 {
-    public class TransactionApiHandler: ApiHandler, ITransactionsApi
+    internal class TransactionApiHandler: ApiHandler, ITransactionsApi
     {
-        public TransactionApiHandler(IApiHandlerOptions<TransactionApiHandler> options) : base(options)
+        public TransactionApiHandler(IApiOptions<ITransactionsApi> options) : base(options)
         {
         }
 
@@ -24,6 +25,8 @@ namespace SereneApi.Interfaces.PayPal.Handlers
             TransactionQuery query = new TransactionQuery();
 
             search.Invoke(query);
+
+            //return PerformRequestAsync<TransactionDto>(Method.GET);
 
             return PerformRequestAsync<TransactionDto>(Method.GET,
                 r => r.WithQuery(query));
