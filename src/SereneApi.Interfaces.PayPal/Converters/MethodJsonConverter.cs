@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SereneApi.Abstractions.Request;
+using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -39,7 +40,7 @@ namespace SereneApi.Interfaces.PayPal.Converters
                 writer.WriteStringValue("DELETE");
                 break;
                 case Method.NONE:
-                    break;
+                break;
                 default:
                 throw new ArgumentOutOfRangeException(nameof(value), value, null);
             }

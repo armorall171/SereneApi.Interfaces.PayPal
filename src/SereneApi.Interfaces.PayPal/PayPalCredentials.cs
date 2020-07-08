@@ -1,4 +1,4 @@
-﻿namespace SereneApi.Interfaces.PayPal.Types
+﻿namespace SereneApi.Interfaces.PayPal
 {
     public class PayPalCredentials
     {

@@ -15,7 +15,10 @@ namespace SereneApi.Interfaces.PayPal.Converters
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value);
+            //"2020-06-20T00:00:00Z"
+            string valueString = value.ToString("yyyy-MM-ddThh:mm:ssZ");
+
+            writer.WriteStringValue(valueString);
         }
     }
 }
