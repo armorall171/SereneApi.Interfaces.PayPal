@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace SereneApi.Interfaces.PayPal.Converters
 {
-    public class TransactionStatusJsonConverter: JsonConverter<TransactionStatus>
+    internal class TransactionStatusJsonConverter: JsonConverter<TransactionStatus>
     {
         public override TransactionStatus Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

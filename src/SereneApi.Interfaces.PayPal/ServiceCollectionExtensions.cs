@@ -1,16 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SereneApi.Abstractions.Authentication;
 using SereneApi.Extensions.DependencyInjection;
-using SereneApi.Interfaces.PayPal.API.Definitions;
+using SereneApi.Interfaces.PayPal.API;
 using SereneApi.Interfaces.PayPal.API.DTOs;
 using SereneApi.Interfaces.PayPal.Handlers;
-using SereneApi.Interfaces.PayPal.Types;
-using SereneApi.Types;
 
-// DO NOTE CHANGE
-// ReSharper disable once CheckNamespace
 namespace SereneApi.Interfaces.PayPal
 {
-    public static class IServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
     {
         public static void AddPayPalApi(this IServiceCollection serviceCollection, PayPalCredentials credentials, bool useSandbox = false)
         {
