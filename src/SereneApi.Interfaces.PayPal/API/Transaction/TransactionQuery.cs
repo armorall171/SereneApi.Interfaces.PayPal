@@ -4,7 +4,7 @@ using SereneApi.Interfaces.PayPal.Converters;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SereneApi.Interfaces.PayPal.API.Queries
+namespace SereneApi.Interfaces.PayPal.API.Transaction
 {
     public class TransactionQuery
     {

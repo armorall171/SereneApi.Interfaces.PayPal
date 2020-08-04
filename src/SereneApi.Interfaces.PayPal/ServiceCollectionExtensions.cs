@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SereneApi.Abstractions.Authentication;
+using SereneApi.Abstractions.Authorization.Authorizers;
 using SereneApi.Extensions.DependencyInjection;
 using SereneApi.Interfaces.PayPal.API;
+using SereneApi.Interfaces.PayPal.API.Authentication;
 using SereneApi.Interfaces.PayPal.API.DTOs;
+using SereneApi.Interfaces.PayPal.API.Transaction;
 using SereneApi.Interfaces.PayPal.Handlers;
 
 namespace SereneApi.Interfaces.PayPal
@@ -22,7 +24,7 @@ namespace SereneApi.Interfaces.PayPal
                 payPalSource = PayPalApiSettings.PayPalSource;
             }
 
-            serviceCollection.RegisterApiHandler<IAuthenticationApi, AuthenticationApiHandler>(o =>
+            serviceCollection.RegisterApi<IAuthenticationApi, AuthenticationApiHandler>(o =>
             {
                 o.UseSource(payPalSource,
                     PayPalApiSettings.AuthenticationResource,
@@ -30,16 +32,16 @@ namespace SereneApi.Interfaces.PayPal
                 o.AddBasicAuthentication(credentials.Username, credentials.Password);
             });
 
-            serviceCollection.RegisterApiHandler<ITransactionsApi, TransactionApiHandler>(o =>
+            serviceCollection.RegisterApi<ITransactionApi, TransactionApiHandler>(o =>
             {
                 o.UseSource(
                     payPalSource,
                     PayPalApiSettings.TransactionResource,
                     PayPalApiSettings.TransactionResourcePath);
             })
-            .AddAuthenticator<IAuthenticationApi, TokenDto>(
-                api => api.GetTokenAsync(),
-                s => new TokenInfo(s.AccessToken, s.ExpiresIn)
+            .AddDIAuthenticator<IAuthenticationApi, TokenDto>(
+                api => api.AuthenticateAsync(),
+                s => new TokenAuthResult(s.AccessToken, s.ExpiresIn)
             );
         }
     }

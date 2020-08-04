@@ -6,30 +6,22 @@ using SereneApi.Interfaces.PayPal.API;
 using SereneApi.Interfaces.PayPal.API.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SereneApi.Interfaces.PayPal.API.Authentication;
 
 namespace SereneApi.Interfaces.PayPal.Handlers
 {
-    internal class AuthenticationApiHandler: ApiHandler, IAuthenticationApi
+    internal class AuthenticationApiHandler: BaseApiHandler, IAuthenticationApi
     {
         public AuthenticationApiHandler(IApiOptions<IAuthenticationApi> options) : base(options)
         {
         }
 
-        public IApiResponse<TokenDto> GetToken()
-        {
-            IApiRequestContent content = new FormUrlEncodedContent(new Dictionary<string, string> { { "grant_type", "client_credentials" } });
-
-            return PerformRequest<TokenDto>(Method.POST, r => r
-                .WithEndPoint("token")
-                .WithInBodyContent(content));
-        }
-
-        public Task<IApiResponse<TokenDto>> GetTokenAsync()
+        public Task<IApiResponse<TokenDto>> AuthenticateAsync()
         {
             IApiRequestContent content = new FormUrlEncodedContent(new Dictionary<string, string> { { "grant_type", "client_credentials" } });
 
             return PerformRequestAsync<TokenDto>(Method.POST, r => r
-                .WithEndPoint("token")
+                .WithEndpoint("token")
                 .WithInBodyContent(content));
         }
     }

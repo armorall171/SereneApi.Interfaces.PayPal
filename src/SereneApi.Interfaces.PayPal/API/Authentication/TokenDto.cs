@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SereneApi.Interfaces.PayPal.API.DTOs
+namespace SereneApi.Interfaces.PayPal.API.Authentication
 {
     public class TokenDto
     {

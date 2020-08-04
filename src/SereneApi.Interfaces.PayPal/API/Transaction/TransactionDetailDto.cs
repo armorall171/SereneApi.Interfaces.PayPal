@@ -1,6 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using SereneApi.Interfaces.PayPal.API.DTOs;
+using System.Text.Json.Serialization;
 
-namespace SereneApi.Interfaces.PayPal.API.DTOs.Transactions
+namespace SereneApi.Interfaces.PayPal.API.Transaction
 {
     public class TransactionDetailDto
     {

@@ -1,10 +1,11 @@
-﻿using SereneApi.Interfaces.PayPal.Converters;
+﻿using SereneApi.Interfaces.PayPal.API.DTOs;
+using SereneApi.Interfaces.PayPal.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace SereneApi.Interfaces.PayPal.API.DTOs.Transactions
+namespace SereneApi.Interfaces.PayPal.API.Transaction
 {
     public class TransactionDto
     {
